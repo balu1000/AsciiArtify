@@ -15,6 +15,13 @@ spec:
       containers:
       - name: hello-world
         image: gcr.io/google-samples/node-hello:1.0
+        resources:
+      limits:
+        memory: 512Mi
+        cpu: "1"
+      requests:
+        memory: 256Mi
+        cpu: "0.2"
         ports:
         - containerPort: 8080
 ---
@@ -27,6 +34,6 @@ spec:
     app: hello-world
   ports:
     - protocol: TCP
-      port: 80
+      port: 8888
       targetPort: 8080
   type: LoadBalancer
